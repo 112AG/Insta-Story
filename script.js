@@ -60,3 +60,11 @@ function savePost() {
     document.querySelector('.save').style.color ="darkblue";
 
 }
+
+function addStory() {
+    alert('Added your Story');
+    document.querySelector('.addStory').style.background = 'linear-gradient(to bottom left, rgb(12, 0, 106), rgb(19, 77, 184),rgb(39, 233, 239))';
+   setTimeout(() => {
+    document.querySelector('.addStory').style.background = 'linear-gradient(to bottom left, rgb(99, 44, 4), rgb(235, 116, 32),rgb(255, 212, 133))';
+   }, 2000);
+}
