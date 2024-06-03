@@ -39,3 +39,24 @@ document.querySelector('.storiyan')
         grow = 0;
     }
 })
+
+// POST
+let likesCount = 11968;
+
+function likePost() {
+    likesCount++;
+    document.getElementById('likes').innerText = `${likesCount.toLocaleString()} likes`;
+    document.querySelector('.like').style.color ="red";
+}
+
+function sharePost() {
+    alert('Post shared!');
+    document.querySelector('.share').style.color ="blue";
+
+}
+
+function savePost() {
+    alert('Post saved!');
+    document.querySelector('.save').style.color ="darkblue";
+
+}

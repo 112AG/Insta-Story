@@ -127,3 +127,51 @@ html, body {
     font-family: "Gilroy";
     font-weight: 300;
 }
+/* POST */
+body {
+    font-family: Arial, sans-serif;
+}
+.post {
+    height: 100%;
+    width: 100%;
+}
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 7px;
+}
+.post-header img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    object-fit: cover;
+    object-position: top;
+}
+.post-header .username {
+    font-weight: bold;
+}
+.post-image {
+    width: 100%;
+}
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 10px;
+}
+.post-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.post-actions>button i {
+    font-size: 20px;
+}
+.post-likes {
+    padding: 0 10px;
+    font-weight: bold;
+}
+.post-caption {
+    padding: 3px 10px;
+    font-size: 15px;
+}
