@@ -21,6 +21,10 @@ html, body {
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     overflow: hidden;
+        overflow-y: scroll;
+}
+.card::-webkit-scrollbar{
+    display: none;
 }
 .header{
     width: 100%;
