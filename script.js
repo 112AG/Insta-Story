@@ -41,30 +41,83 @@ document.querySelector('.storiyan')
 })
 
 // POST
-let likesCount = 11968;
+        var posts = [
+            {
+                pp: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                postImg: "https://images.unsplash.com/photo-1513137621582-05b38724f2a3?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
+        ];
 
-function likePost() {
-    likesCount++;
-    document.getElementById('likes').innerText = `${likesCount.toLocaleString()} likes`;
-    document.querySelector('.like').style.color ="red";
-}
+        var clut = "";
 
-function sharePost() {
-    alert('Post shared!');
-    document.querySelector('.share').style.color ="blue";
+        posts.forEach(function (elem, index) {
+            clut += `
+                <div class="post" data-index="${index}">
+                    <div class="post-header">
+                        <img src="${elem.pp}" alt="Profile Picture">
+                        <span class="username">kpunkka</span>
+                    </div>
+                    <img src="${elem.postImg}" alt="Post Image" class="post-image">
+                    <div class="post-actions">
+                        <button class="like-btn">
+                            <i class="ri-heart-fill like"></i>
+                        </button>
+                        <button class="share-btn">
+                            <i class="ri-send-plane-fill share"></i>
+                        </button>
+                        <button class="save-btn">
+                            <i class="ri-folder-check-fill save"></i>
+                        </button>
+                    </div>
+                    <div class="post-likes" id="likes-${index}">11968 likes</div>
+                    <div class="post-caption">
+                        <span class="username">kpunkka</span> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde dolorem voluptatem aliquid?... Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad omnis, nam neque repudiandae vel dolorum enim porro quo accusamus suscipit! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, nisi libero.
+                    </div>
+                </div>`;
+        });
 
-}
+        document.querySelector('.allPost').innerHTML = clut;
 
-function savePost() {
-    alert('Post saved!');
-    document.querySelector('.save').style.color ="darkblue";
+        document.querySelector('.allPost')
+        .addEventListener('click', (details) => {
+            if(details.target.closest('.like-btn')){
+                likePost(details);
+            }else if (details.target.closest('.share-btn')) {
+                    sharePost(details);
+                    } else if (details.target.closest('.save-btn')) {
+                    savePost(details);
+                }
+        });
 
-}
+        let likesCount = 11969;
 
-function addStory() {
-    alert('Added your Story');
-    document.querySelector('.addStory').style.background = 'linear-gradient(to bottom left, rgb(12, 0, 106), rgb(19, 77, 184),rgb(39, 233, 239))';
-   setTimeout(() => {
-    document.querySelector('.addStory').style.background = 'linear-gradient(to bottom left, rgb(99, 44, 4), rgb(235, 116, 32),rgb(255, 212, 133))';
-   }, 2000);
-}
+        function likePost(details) {
+            let like = likesCount++;
+            document.querySelector('.like').style.color = 'red';
+            const postElement = details.target.closest('.post');
+            const index = postElement.getAttribute('data-index');
+            document.querySelector('.post-likes').innerHTML = like +' '+'likes';
+        }
+
+        function sharePost(event) {
+            const postElement = event.target.closest('.post');
+            const index = postElement.getAttribute('data-index');
+            alert(`Shared post ${index}`);
+            document.querySelector('.share').style.color ="blue";
+        }
+
+        function savePost(event) {
+            const postElement = event.target.closest('.post');
+            const index = postElement.getAttribute('data-index');
+            alert(`Saved post ${index}`);
+            document.querySelector('.save').style.color ="darkblue";
+    }
+
+            function addStory() {
+            alert('Added your Story');
+             document.querySelector('.addStory').style.background = 'linear-gradient(to bottom left, rgb(12, 0, 106), rgb(19, 77, 184),rgb(39, 233, 239))';
+                setTimeout(() => {
+                    document.querySelector('.addStory').style.background = 'linear-gradient(to bottom left, rgb(99, 44, 4), rgb(235, 116, 32),rgb(255, 212, 133))';
+                }, 2000);
+            }
+     
